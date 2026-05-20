@@ -32,5 +32,16 @@ def create_product():
     inventory.append(new_product.to_dict())
     return jsonify(new_product.to_dict()), 201
 
+
+@app.route("/inventory/<int:id>", methods=["PATCH"])
+def update_product(id):
+    product = next((p for p in inventory if p["id"] == id), None)
+    if not product:
+        return jsonify({"message": "Inventory item not found"}), 404
+    
+    data = request.get_json()
+    product.update(data)
+    return jsonify(product), 200
+
 if __name__ == "__main__":
     app.run(debug=True, port=5555)
