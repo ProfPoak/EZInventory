@@ -7,11 +7,15 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-HEADERS = {"User-Agent": "EZInventory/1.0"}
+HEADERS = {"User-Agent": "EZInventory - Python - Version 1.0 - https://github.com/profpoak/EZInventory"}
 
 def fetch_by_barcode(barcode):
-    url = f"https://world.openfoodfacts.org/api/v2/product/{barcode}.json?fields=product_name,brands,ingredients_text,quantity,code&lc=en"
-    response = requests.get(url, headers=HEADERS)
+    url = f"https://world.openfoodfacts.org/api/v2/product/{barcode}.json"
+    params = {
+        "fields": "product_name,brands,ingredients_text,quantity,code",
+        "lc": "en"
+    }
+    response = requests.get(url, headers=HEADERS, params=params)
     logging.info(f"Barcode lookup {barcode}: {response.status_code}")
     if not response.ok:
         logging.error(f"Barcode lookup failed: {response.status_code}")
@@ -22,8 +26,18 @@ def fetch_by_barcode(barcode):
     return barcode_data_cleaner(barcode, data)
 
 def fetch_by_name(name):
-    url = f"https://world.openfoodfacts.org/cgi/search.pl?search_terms={name}&json=1&page_size=5&fields=product_name,brands,ingredients_text,quantity,code&lc=en&countries_tags=united-states"
-    response = requests.get(url, headers=HEADERS)
+    url = "https://world.openfoodfacts.org/cgi/search.pl"
+    params = {
+    "search_terms": name,
+    "search_simple": 1,
+    "action": "process",
+    "json": 1,
+    "page_size": 5,
+    "fields": "product_name,brands,ingredients_text,quantity,code",
+    "lc": "en",
+    "countries_tags": "united-states"
+    }
+    response = requests.get(url, headers=HEADERS, params=params)
     logging.info(f"Name search '{name}': {response.status_code}")
     if not response.ok:
         logging.error(f"Name search failed: {response.status_code}")
