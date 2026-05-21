@@ -1,27 +1,36 @@
 import requests
+import logging
+
+logging.basicConfig(
+    filename="logs/api.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 HEADERS = {"User-Agent": "EZInventory/1.0"}
 
 def fetch_by_barcode(barcode):
     url = f"https://world.openfoodfacts.org/api/v2/product/{barcode}.json?fields=product_name,brands,ingredients_text,quantity,code&lc=en"
     response = requests.get(url, headers=HEADERS)
+    logging.info(f"Barcode lookup {barcode}: {response.status_code}")
     if not response.ok:
+        logging.error(f"Barcode lookup failed: {response.status_code}")
         return "server unavailable"
     data = response.json()
     if data.get("status") == 0:
         return None
-    clean_data = barcode_data_cleaner(barcode, data)
-    return clean_data
+    return barcode_data_cleaner(barcode, data)
 
 def fetch_by_name(name):
     url = f"https://world.openfoodfacts.org/cgi/search.pl?search_terms={name}&json=1&page_size=5&fields=product_name,brands,ingredients_text,quantity,code&lc=en&countries_tags=united-states"
     response = requests.get(url, headers=HEADERS)
+    logging.info(f"Name search '{name}': {response.status_code}")
     if not response.ok:
+        logging.error(f"Name search failed: {response.status_code}")
         return "server unavailable"
     data = response.json()
     products = data.get("products", [])
-    clean_data = name_data_cleaner(products)
-    return clean_data
+    return name_data_cleaner(products)
 
 def barcode_data_cleaner(barcode, data):
     product = data.get("product", {})
