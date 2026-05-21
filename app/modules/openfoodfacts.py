@@ -5,6 +5,8 @@ HEADERS = {"User-Agent": "EZInventory/1.0"}
 def fetch_by_barcode(barcode):
     url = f"https://world.openfoodfacts.org/api/v2/product/{barcode}.json?fields=product_name,brands,ingredients_text,quantity,code&lc=en"
     response = requests.get(url, headers=HEADERS)
+    if not response.ok:
+        return "server unavailable"
     data = response.json()
     if data.get("status") == 0:
         return None
@@ -14,6 +16,8 @@ def fetch_by_barcode(barcode):
 def fetch_by_name(name):
     url = f"https://world.openfoodfacts.org/cgi/search.pl?search_terms={name}&json=1&page_size=5&fields=product_name,brands,ingredients_text,quantity,code&lc=en&countries_tags=united-states"
     response = requests.get(url, headers=HEADERS)
+    if not response.ok:
+        return "server unavailable"
     data = response.json()
     products = data.get("products", [])
     clean_data = name_data_cleaner(products)
