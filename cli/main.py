@@ -1,4 +1,6 @@
 import requests
+from modules.inventory import view_inventory, view_item, add_item, update_item, delete_item
+from modules.lookup import lookup_product
 
 def main():
     menu = {

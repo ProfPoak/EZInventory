@@ -1,0 +1,42 @@
+2026-05-21 16:25:14,865 - INFO - Name search 'turnip': 503
+2026-05-21 16:25:14,866 - ERROR - Name search failed: 503
+2026-05-21 16:25:14,867 - INFO - 127.0.0.1 - - [21/May/2026 16:25:14] "[35m[1mGET /inventory/lookup?name=turnip HTTP/1.1[0m" 502 -
+2026-05-21 16:25:29,505 - INFO - Name search 'peanutbutter': 200
+2026-05-21 16:25:29,508 - INFO - 127.0.0.1 - - [21/May/2026 16:25:29] "GET /inventory/lookup?name=peanutbutter HTTP/1.1" 200 -
+2026-05-21 16:26:05,145 - INFO - Name search 'kellog's': 200
+2026-05-21 16:26:05,148 - INFO - 127.0.0.1 - - [21/May/2026 16:26:05] "GET /inventory/lookup?name=kellog's HTTP/1.1" 200 -
+2026-05-21 16:26:33,505 - INFO - Name search 'kellog's rice krispies': 200
+2026-05-21 16:26:33,509 - INFO - 127.0.0.1 - - [21/May/2026 16:26:33] "GET /inventory/lookup?name=kellog's%20rice%20krispies HTTP/1.1" 200 -
+2026-05-21 16:27:14,363 - INFO - Name search 'fruit loops': 200
+2026-05-21 16:27:14,366 - INFO - 127.0.0.1 - - [21/May/2026 16:27:14] "GET /inventory/lookup?name=fruit%20loops HTTP/1.1" 200 -
+2026-05-21 16:29:24,411 - INFO - Name search 'marshmallow matey's': 200
+2026-05-21 16:29:24,413 - INFO - 127.0.0.1 - - [21/May/2026 16:29:24] "GET /inventory/lookup?name=marshmallow%20matey's HTTP/1.1" 200 -
+2026-05-21 16:34:58,562 - INFO - 127.0.0.1 - - [21/May/2026 16:34:58] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:36:08,954 - INFO - 127.0.0.1 - - [21/May/2026 16:36:08] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:36:20,827 - INFO - 127.0.0.1 - - [21/May/2026 16:36:20] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:46:04,195 - INFO - 127.0.0.1 - - [21/May/2026 16:46:04] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:46:47,096 - INFO - 127.0.0.1 - - [21/May/2026 16:46:47] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:48:24,164 - INFO - 127.0.0.1 - - [21/May/2026 16:48:24] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:49:00,432 - INFO - 127.0.0.1 - - [21/May/2026 16:49:00] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 16:55:06,433 - INFO - 127.0.0.1 - - [21/May/2026 16:55:06] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 16:57:55,785 - INFO - 127.0.0.1 - - [21/May/2026 16:57:55] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:02:32,838 - INFO - 127.0.0.1 - - [21/May/2026 17:02:32] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:04:58,698 - INFO - 127.0.0.1 - - [21/May/2026 17:04:58] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:19:47,982 - INFO - 127.0.0.1 - - [21/May/2026 17:19:47] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:20:39,392 - INFO - 127.0.0.1 - - [21/May/2026 17:20:39] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:22:30,671 - INFO - 127.0.0.1 - - [21/May/2026 17:22:30] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:24:41,781 - INFO - 127.0.0.1 - - [21/May/2026 17:24:41] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:26:29,826 - INFO - 127.0.0.1 - - [21/May/2026 17:26:29] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:27:29,404 - INFO - 127.0.0.1 - - [21/May/2026 17:27:29] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:28:43,284 - INFO - 127.0.0.1 - - [21/May/2026 17:28:43] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:29:07,946 - INFO - 127.0.0.1 - - [21/May/2026 17:29:07] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:29:51,068 - INFO - 127.0.0.1 - - [21/May/2026 17:29:51] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:30:06,995 - INFO - 127.0.0.1 - - [21/May/2026 17:30:06] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:31:41,719 - INFO - 127.0.0.1 - - [21/May/2026 17:31:41] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:32:28,134 - INFO - 127.0.0.1 - - [21/May/2026 17:32:28] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:33:00,917 - INFO - 127.0.0.1 - - [21/May/2026 17:33:00] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:33:46,926 - INFO - 127.0.0.1 - - [21/May/2026 17:33:46] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:33:51,932 - INFO - 127.0.0.1 - - [21/May/2026 17:33:51] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:35:45,873 - INFO - 127.0.0.1 - - [21/May/2026 17:35:45] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:35:55,190 - INFO - 127.0.0.1 - - [21/May/2026 17:35:55] "GET /inventory/3 HTTP/1.1" 200 -
+2026-05-21 17:37:26,695 - INFO - 127.0.0.1 - - [21/May/2026 17:37:26] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
