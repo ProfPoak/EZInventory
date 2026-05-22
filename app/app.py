@@ -5,6 +5,15 @@ from modules.openfoodfacts import fetch_by_barcode, fetch_by_name
 
 app = Flask(__name__)
 
+@app.errorhandler(TypeError)
+@app.errorhandler(ValueError)
+def handle_validation_error(e):
+    return jsonify({"message": str(e)}), 400
+
+@app.errorhandler(KeyError)
+def handle_key_error(e):
+    return jsonify({"message": f"Missing required field {str(e)}"}), 400
+
 @app.route("/inventory", methods=["GET"])
 def get_inventory():
     return jsonify(inventory), 200

@@ -1,0 +1,20 @@
+2026-05-22 12:00:13,967 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/classes/Product.py', reloading
+2026-05-22 12:00:14,014 - INFO -  * Restarting with stat
+2026-05-22 12:00:18,385 - WARNING -  * Debugger is active!
+2026-05-22 12:00:18,405 - INFO -  * Debugger PIN: 750-087-955
+2026-05-22 12:06:18,294 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/classes/Product.py', reloading
+2026-05-22 12:06:18,344 - INFO -  * Restarting with stat
+2026-05-22 12:06:18,564 - WARNING -  * Debugger is active!
+2026-05-22 12:06:18,570 - INFO -  * Debugger PIN: 750-087-955
+2026-05-22 12:11:06,549 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/classes/Product.py', reloading
+2026-05-22 12:11:06,599 - INFO -  * Restarting with stat
+2026-05-22 12:11:06,813 - WARNING -  * Debugger is active!
+2026-05-22 12:11:06,820 - INFO -  * Debugger PIN: 750-087-955
+2026-05-22 12:13:50,600 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/classes/Product.py', reloading
+2026-05-22 12:13:50,650 - INFO -  * Restarting with stat
+2026-05-22 12:13:50,871 - WARNING -  * Debugger is active!
+2026-05-22 12:13:50,877 - INFO -  * Debugger PIN: 750-087-955
+2026-05-22 12:22:52,715 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/app.py', reloading
+2026-05-22 12:22:52,766 - INFO -  * Restarting with stat
+2026-05-22 12:22:53,037 - WARNING -  * Debugger is active!
+2026-05-22 12:22:53,043 - INFO -  * Debugger PIN: 750-087-955
