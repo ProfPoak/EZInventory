@@ -89,7 +89,8 @@ def delete_item():
     id, response = product_lookup(action="Delete")
     if id is None:
         return
-    
+    data_unpacker(response.json())
+
     while True:
         confirmation = input("Type 'delete' to confirm request (or 'b' to go back): ")
         if confirmation.lower() == "b":

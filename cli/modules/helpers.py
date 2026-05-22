@@ -31,6 +31,7 @@ def product_lookup(id = None, action="View"):
         response = request_helper(path=f'/inventory/{id}', method="get")
         if response.status_code == 404:
             print("\nProduct not found. Please try again.")
+            id = None
         else:
             return id, response
         
