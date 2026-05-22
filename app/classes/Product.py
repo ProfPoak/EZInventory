@@ -28,7 +28,9 @@ class Product:
     @product_name.setter
     def product_name(self, value):
         if not isinstance(value, str):
-            raise TypeError("Product name must be a string")
+            raise TypeError("Product name must be a string")        
+        if value.strip() == "":
+            raise ValueError("Product name cannot be empty")
         self._product_name = value
 
     @property
@@ -39,6 +41,9 @@ class Product:
     def brands(self, value):
         if not isinstance(value, str):
             raise TypeError("Brands must be a string")
+        if value.strip() == "":
+            raise ValueError("Brands cannot be empty")
+
         self._brands = value
 
     @property
@@ -49,6 +54,8 @@ class Product:
     def ingredients_text(self, value):
         if not isinstance(value, str):
             raise TypeError("Ingredients text must be a string")
+        if value.strip() == "":
+            raise ValueError("Ingredients cannot be empty")
         self._ingredients_text = value
 
     @property
@@ -59,6 +66,8 @@ class Product:
     def quantity(self, value):
         if not isinstance(value, str):
             raise TypeError("Quantity must be a string")
+        if value.strip() == "":
+            raise ValueError("Quantity cannot be empty")
         self._quantity = value
 
     @property
@@ -95,7 +104,7 @@ class Product:
        
         if clean_price <= 0:
             raise ValueError("Price must be a positive number")
-        self._price = clean_price
+        self._price = round(clean_price, 2)
 
     @property
     def barcode(self):
@@ -108,4 +117,6 @@ class Product:
         str_value = str(value)
         if not str_value.isdecimal():
             raise TypeError("Barcode must be a numeric string with no symbols")
+        if len(str_value) < 12 or len(str_value) > 13:
+            raise ValueError("Barcode must be 12 or 13 characters long")
         self._barcode = str_value
