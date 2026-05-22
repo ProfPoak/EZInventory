@@ -74,3 +74,18 @@ def lookup_add_item(data):
             return
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
+
+def selection_list(data):
+    print("\nSelect a product:")
+    for i, p in enumerate(data, 1):
+        print(f"  {i}. {p['product_name']}")
+    print("  0. Cancel")
+
+    while True:
+        choice = input("\nEnter your selection: ").strip()
+        if choice == "0":
+            return None
+        elif choice.isdigit() and 1 <= int(choice) <= len(data):
+            return data[int(choice) - 1]
+        else:
+            print("Invalid choice. Please try again.")

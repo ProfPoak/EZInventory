@@ -1,4 +1,4 @@
-from .helpers import request_helper, lookup_data_unpacker, lookup_add_item
+from .helpers import request_helper, lookup_data_unpacker, lookup_add_item, selection_list
 
 def lookup_product():
     menu = {
@@ -36,4 +36,20 @@ def barcode_search():
             return
 
 def name_search():
-    pass
+    while True:
+        search = input("\n Enter Product name: ")
+        response = request_helper(path='/inventory/lookup', method="get", params={"name": search})
+        if response.status_code == 404:
+            print("Product not found. Please try a different barcode.")
+        elif response.status_code == 502:
+            print("Server is currently unavailable. Please try again later")
+        elif response.status_code == 200:
+            data = response.json()
+            lookup_data_unpacker(data)
+            selected = selection_list(data)
+            if selected:
+                lookup_add_item(selected)
+                return
+            else:
+                print("No product selected.")
+                return
