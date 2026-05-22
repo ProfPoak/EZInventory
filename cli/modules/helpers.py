@@ -20,9 +20,11 @@ def data_unpacker(data):
             print("  ---")
             print("\n")
 
-def product_lookup(action="View"):
+def product_lookup(id = None, action="View"):
     while True:
-        id = input(f"Enter product ID to {action} (or 'b' to go back): ").strip()
+        if id is None:
+            id = input(f"Enter product ID to {action} (or 'b' to go back): ").strip()
+
         if id.lower() == "b":
             return None, None
         
