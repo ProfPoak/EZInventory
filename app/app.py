@@ -5,6 +5,15 @@ from modules.openfoodfacts import fetch_by_barcode, fetch_by_name
 
 app = Flask(__name__)
 
+@app.errorhandler(TypeError)
+@app.errorhandler(ValueError)
+def handle_validation_error(e):
+    return jsonify({"message": str(e)}), 400
+
+@app.errorhandler(KeyError)
+def handle_key_error(e):
+    return jsonify({"message": f"Missing required field {str(e)}"}), 400
+
 @app.route("/inventory", methods=["GET"])
 def get_inventory():
     return jsonify(inventory), 200
@@ -36,13 +45,28 @@ def create_product():
 
 @app.route("/inventory/<int:id>", methods=["PATCH"])
 def update_product(id):
-    product = next((p for p in inventory if p["id"] == id), None)
-    if not product:
+    product_dict = next((p for p in inventory if p["id"] == id), None)
+    if not product_dict:
         return jsonify({"message": "Inventory item not found"}), 404
     
     data = request.get_json()
-    product.update(data)
-    return jsonify(product), 200
+    if not data:
+        return jsonify({"message": "Missing request body"}), 400
+    
+    merged_data = {**product_dict, **data}
+    validated_product = Product(
+        id=merged_data["id"],
+        product_name=merged_data["product_name"],
+        brands=merged_data["brands"],
+        ingredients_text=merged_data["ingredients_text"],
+        quantity=merged_data["quantity"],
+        stock=merged_data["stock"],
+        price=merged_data["price"],
+        barcode=merged_data["barcode"]
+    )
+
+    product_dict.update(validated_product.to_dict())
+    return jsonify(product_dict), 200
 
 @app.route("/inventory/<int:id>", methods=["DELETE"])
 def delete_product(id):
@@ -72,7 +96,6 @@ def lookup_product():
         if not result:
             return jsonify({"message": "Product not found"}), 404
         return jsonify(result), 200
-
     else:
         return jsonify({"message": "Please provide a barcode or name"}), 400
 

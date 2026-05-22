@@ -39,6 +39,7 @@ def add_item():
         print(f"\n'{r['product_name']}' has been added to inventory with ID: {r['id']}")
     else:
         print("\nFailed to add product.")
+        print(f"Error: {r.get('message', 'Unknown error')}")
 
 def update_item():
     id, response = product_lookup(action="Update")
@@ -78,11 +79,13 @@ def update_item():
         new_value = input(f"Enter new {label}: ").strip()
 
         response = request_helper(path=f'/inventory/{id}', method="patch", data={field_key: new_value})
+        r = response.json()
         if response.status_code == 200:
             # TODO: Refactor success message to show old value -> new value
             print(f"\n'{label}' updated successfully.")
         else:
             print("\nFailed to update product.")
+            print(f"Error: {r.get('message', 'Unknown error')}")
 
 def delete_item():
     id, response = product_lookup(action="Delete")
@@ -95,11 +98,13 @@ def delete_item():
                 break
         elif confirmation == "delete":    
             response = request_helper(path=f'/inventory/{id}', method="delete")
+            r = response.json()
             if response.status_code == 200:
                 print("\nProduct deleted successfully.")
                 break
             else:
                 print("\n Unable to delete product please try again")
+                print(f"Error: {r.get('message', 'Unknown error')}")
                 break
         else:
             print("\nInvalid response please try again.")
