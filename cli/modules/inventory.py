@@ -46,7 +46,53 @@ def add_item():
         print("\nFailed to add product.")
 
 def update_item():
-    pass
+    while True:
+        id = input("Enter product ID to update (or 'b' to go back): ").strip()
+        if id.lower() == "b":
+            return
+        
+        response = request_helper(path=f'/inventory/{id}', method="get")
+        if response.status_code == 404:
+            print("\nProduct not found. Please try again.")
+        else:
+            break
+
+    while True:
+        response = request_helper(path=f'/inventory/{id}', method="get")
+        p = response.json()
+
+        fields = {
+            "1": (f"Product Name: {p['product_name']}", "product_name"),
+            "2": (f"Brand: {p['brands']}", "brands"),
+            "3": (f"Ingredients: {p['ingredients_text']}", "ingredients_text"),
+            "4": (f"Product Size: {p['quantity']}", "quantity"),
+            "5": (f"Stock: {p['stock']}", "stock"),
+            "6": (f"Price: ${p['price']}", "price"),
+            "7": (f"UPC Barcode: {p['barcode']}", "barcode"),
+        }
+
+
+        print("\nWhat would you like to update?")
+        for key, (label, _) in fields.items():
+            print(f"{key}. {label}")
+        print("0. Done")
+
+        choice = input("\nEnter your choice: ").strip()
+        
+        if choice == "0":
+            break
+        elif choice not in fields:
+            print("\nInvalid choice.")
+            continue
+
+        label, field_key = fields[choice]
+        new_value = input(f"Enter new {label}: ").strip()
+
+        response = request_helper(path=f'/inventory/{id}', method="patch", data={field_key: new_value})
+        if response.status_code == 200:
+            print(f"\n'{label}' updated successfully.")
+        else:
+            print("\nFailed to update product.")
 
 def delete_item():
     pass
