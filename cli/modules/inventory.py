@@ -1,4 +1,4 @@
-from .helpers import request_helper, data_unpacker, product_lookup
+from helpers import request_helper, data_unpacker, product_lookup
 
 def view_inventory():
     response = request_helper(path="/inventory", method="get").json()

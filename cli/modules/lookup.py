@@ -1,4 +1,4 @@
-from .helpers import request_helper, lookup_data_unpacker, lookup_add_item, selection_list
+from helpers import request_helper, lookup_data_unpacker, lookup_add_item, selection_list
 
 def lookup_product():
     menu = {
