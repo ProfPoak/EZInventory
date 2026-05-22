@@ -19,7 +19,7 @@ def data_unpacker(data):
                 print("  ---")
                 print("\n")
 
-def product_lookup(action="view"):
+def product_lookup(action="View"):
     while True:
         id = input(f"Enter product ID to {action} (or 'b' to go back): ").strip()
         if id.lower() == "b":

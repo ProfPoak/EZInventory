@@ -7,17 +7,12 @@ def view_inventory():
     
 
 def view_item():
-    while True:
-        id = input("Enter product ID (or 'b' to go back): ").strip()
-        if id.lower() == "b":
-            break
-        response = request_helper(path=f'/inventory/{id}', method="get")
-        if response.status_code == 404:
-            print("\nProduct not found. Please try again.")
-        else:
-            data_unpacker([response.json()])
-            input("Press ENTER to continue")
-            break
+    id, response = product_lookup()
+    if id is None:
+        return
+   
+    data_unpacker([response.json()])     
+    input("Press ENTER to continue")
 
 def add_item():
     product_name = input("Enter Product Name: ")
@@ -46,16 +41,7 @@ def add_item():
         print("\nFailed to add product.")
 
 def update_item():
-    while True:
-        id = input("Enter product ID to update (or 'b' to go back): ").strip()
-        if id.lower() == "b":
-            return
-        
-        response = request_helper(path=f'/inventory/{id}', method="get")
-        if response.status_code == 404:
-            print("\nProduct not found. Please try again.")
-        else:
-            break
+    id, response = product_lookup(action="Update")
 
     while True:
         response = request_helper(path=f'/inventory/{id}', method="get")
@@ -77,25 +63,27 @@ def update_item():
             print(f"{key}. {label}")
         print("0. Done")
 
-        choice = input("\nEnter your choice: ").strip()
+        choice = input("\nEnter your selection: ").strip()
         
         if choice == "0":
             break
         elif choice not in fields:
             print("\nInvalid choice.")
             continue
-
+        
+        # TODO: Refactor input prompt to show field name only, not current value
         label, field_key = fields[choice]
         new_value = input(f"Enter new {label}: ").strip()
 
         response = request_helper(path=f'/inventory/{id}', method="patch", data={field_key: new_value})
         if response.status_code == 200:
+            # TODO: Refactor success message to show old value -> new value
             print(f"\n'{label}' updated successfully.")
         else:
             print("\nFailed to update product.")
 
 def delete_item():
-    id, response = product_lookup(action="delete")
+    id, response = product_lookup(action="Delete")
     if id is None:
         return
     
