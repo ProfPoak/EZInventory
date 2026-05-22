@@ -42,6 +42,8 @@ def add_item():
 
 def update_item():
     id, response = product_lookup(action="Update")
+    if id is None:
+        return
 
     while True:
         response = request_helper(path=f'/inventory/{id}', method="get")
