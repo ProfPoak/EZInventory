@@ -45,13 +45,27 @@ def create_product():
 
 @app.route("/inventory/<int:id>", methods=["PATCH"])
 def update_product(id):
-    product = next((p for p in inventory if p["id"] == id), None)
-    if not product:
+    product_dict = next((p for p in inventory if p["id"] == id), None)
+    if not product_dict:
         return jsonify({"message": "Inventory item not found"}), 404
     
     data = request.get_json()
-    product.update(data)
-    return jsonify(product), 200
+    if not data:
+        return jsonify({"message": "Missing request body"}), 400
+    
+    merged_data = {**product_dict, **data}
+    validated_product = Product(
+        product_name=merged_data.get("product_name"),
+        brands=merged_data.get("brands"),
+        ingredients_text=merged_data.get("ingredients_text"),
+        quantity=merged_data.get("quantity"),
+        stock=merged_data.get("stock"),
+        price=merged_data.get("price"),
+        barcode=merged_data.get("barcode")
+    )
+
+    product_dict.update(validated_product.to_dict())
+    return jsonify(product_dict), 200
 
 @app.route("/inventory/<int:id>", methods=["DELETE"])
 def delete_product(id):
@@ -81,7 +95,6 @@ def lookup_product():
         if not result:
             return jsonify({"message": "Product not found"}), 404
         return jsonify(result), 200
-
     else:
         return jsonify({"message": "Please provide a barcode or name"}), 400
 

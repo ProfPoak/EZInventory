@@ -18,3 +18,11 @@
 2026-05-22 12:22:52,766 - INFO -  * Restarting with stat
 2026-05-22 12:22:53,037 - WARNING -  * Debugger is active!
 2026-05-22 12:22:53,043 - INFO -  * Debugger PIN: 750-087-955
+2026-05-22 12:27:41,290 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/app.py', reloading
+2026-05-22 12:27:41,334 - INFO -  * Restarting with stat
+2026-05-22 12:27:41,588 - WARNING -  * Debugger is active!
+2026-05-22 12:27:41,594 - INFO -  * Debugger PIN: 750-087-955
+2026-05-22 12:48:29,864 - INFO -  * Detected change in '/Users/porter/Documents/Flatiron/course_8/module_8/EZInventory/app/app.py', reloading
+2026-05-22 12:48:29,912 - INFO -  * Restarting with stat
+2026-05-22 12:48:30,268 - WARNING -  * Debugger is active!
+2026-05-22 12:48:30,277 - INFO -  * Debugger PIN: 750-087-955
