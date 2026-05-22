@@ -55,13 +55,14 @@ def update_product(id):
     
     merged_data = {**product_dict, **data}
     validated_product = Product(
-        product_name=merged_data.get("product_name"),
-        brands=merged_data.get("brands"),
-        ingredients_text=merged_data.get("ingredients_text"),
-        quantity=merged_data.get("quantity"),
-        stock=merged_data.get("stock"),
-        price=merged_data.get("price"),
-        barcode=merged_data.get("barcode")
+        id=merged_data["id"],
+        product_name=merged_data["product_name"],
+        brands=merged_data["brands"],
+        ingredients_text=merged_data["ingredients_text"],
+        quantity=merged_data["quantity"],
+        stock=merged_data["stock"],
+        price=merged_data["price"],
+        barcode=merged_data["barcode"]
     )
 
     product_dict.update(validated_product.to_dict())

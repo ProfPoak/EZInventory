@@ -67,11 +67,17 @@ class Product:
     
     @stock.setter
     def stock(self, value):
-        if not isinstance(value, int):
+        if value is None:
+            raise TypeError("Stock cannot be left empty")
+        
+        try:
+            clean_stock = int(value)
+        except (TypeError, ValueError):
             raise TypeError("Stock must be an integer")
-        if value <= 0:
+
+        if clean_stock <= 0:
             raise ValueError("Stock must be a positive integer")
-        self._stock = value
+        self._stock = clean_stock
 
     @property
     def price(self):
@@ -79,11 +85,17 @@ class Product:
 
     @price.setter
     def price(self, value):
-        if not isinstance(value, (int, float)):
+        if value is None:
+            raise TypeError("Price cannot be left empty")
+        
+        try:
+            clean_price = float(value)
+        except (TypeError, ValueError):
             raise TypeError("Price must be a number")
-        if value <= 0:
+       
+        if clean_price <= 0:
             raise ValueError("Price must be a positive number")
-        self._price = value
+        self._price = clean_price
 
     @property
     def barcode(self):
