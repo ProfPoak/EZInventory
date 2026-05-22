@@ -51,19 +51,19 @@ def update_item():
         p = response.json()
 
         fields = {
-            "1": (f"Product Name: {p['product_name']}", "product_name"),
-            "2": (f"Brand: {p['brands']}", "brands"),
-            "3": (f"Ingredients: {p['ingredients_text']}", "ingredients_text"),
-            "4": (f"Product Size: {p['quantity']}", "quantity"),
-            "5": (f"Stock: {p['stock']}", "stock"),
-            "6": (f"Price: ${p['price']}", "price"),
-            "7": (f"UPC Barcode: {p['barcode']}", "barcode"),
+            "1": ("Product Name: ", p['product_name'], "product_name"),
+            "2": ("Brand: ", p['brands'], "brands"),
+            "3": ("Ingredients: ", p['ingredients_text'], "ingredients_text"),
+            "4": ("Product Size: ", p['quantity'], "quantity"),
+            "5": ("Stock: ", p['stock'], "stock"),
+            "6": ("Price: $", p['price'], "price"),
+            "7": ("UPC Barcode: ", p['barcode'], "barcode"),
         }
 
 
         print("\nWhat would you like to update?")
-        for key, (label, _) in fields.items():
-            print(f"{key}. {label}")
+        for key, (label, p_value, _) in fields.items():
+            print(f"{key}. {label}{p_value}")
         print("0. Done")
 
         choice = input("\nEnter your selection: ").strip()
@@ -74,15 +74,13 @@ def update_item():
             print("\nInvalid choice.")
             continue
         
-        # TODO: Refactor input prompt to show field name only, not current value
-        label, field_key = fields[choice]
-        new_value = input(f"Enter new {label}: ").strip()
+        label, p_value, field_key = fields[choice]
+        new_value = input(f"Enter new {label}").strip()
 
         response = request_helper(path=f'/inventory/{id}', method="patch", data={field_key: new_value})
         r = response.json()
         if response.status_code == 200:
-            # TODO: Refactor success message to show old value -> new value
-            print(f"\n'{label}' updated successfully.")
+            print(f"\n'{p_value}' successfully updated to '{new_value}'.")
         else:
             print("\nFailed to update product.")
             print(f"Error: {r.get('message', 'Unknown error')}")
