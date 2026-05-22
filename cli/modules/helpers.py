@@ -18,4 +18,15 @@ def data_unpacker(data):
                 print(f'  UPC Barcode: {p["barcode"]}')
                 print("  ---")
                 print("\n")
-   
+
+def product_lookup(action="view"):
+    while True:
+        id = input(f"Enter product ID to {action} (or 'b' to go back): ").strip()
+        if id.lower() == "b":
+            return None, None
+        
+        response = request_helper(path=f'/inventory/{id}', method="get")
+        if response.status_code == 404:
+            print("\nProduct not found. Please try again.")
+        else:
+            return id, response

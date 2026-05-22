@@ -1,4 +1,4 @@
-from .helpers import request_helper, data_unpacker
+from .helpers import request_helper, data_unpacker, product_lookup
 
 def view_inventory():
     response = request_helper(path="/inventory", method="get").json()
@@ -95,4 +95,21 @@ def update_item():
             print("\nFailed to update product.")
 
 def delete_item():
-    pass
+    id, response = product_lookup(action="delete")
+    if id is None:
+        return
+    
+    while True:
+        confirmation = input("Type 'delete' to confirm request (or 'b' to go back): ")
+        if confirmation.lower() == "b":
+                break
+        elif confirmation == "delete":    
+            response = request_helper(path=f'/inventory/{id}', method="delete")
+            if response.status_code == 200:
+                print("\nProduct deleted successfully.")
+                break
+            else:
+                print("\n Unable to delete product please try again")
+                break
+        else:
+            print("\nInvalid response please try again.")
