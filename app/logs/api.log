@@ -40,3 +40,15 @@
 2026-05-21 17:35:45,873 - INFO - 127.0.0.1 - - [21/May/2026 17:35:45] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
 2026-05-21 17:35:55,190 - INFO - 127.0.0.1 - - [21/May/2026 17:35:55] "GET /inventory/3 HTTP/1.1" 200 -
 2026-05-21 17:37:26,695 - INFO - 127.0.0.1 - - [21/May/2026 17:37:26] "[33mGET /inventory/4 HTTP/1.1[0m" 404 -
+2026-05-21 17:51:17,018 - INFO - 127.0.0.1 - - [21/May/2026 17:51:17] "[35m[1mPOST /inventory HTTP/1.1[0m" 201 -
+2026-05-21 17:51:20,446 - INFO - 127.0.0.1 - - [21/May/2026 17:51:20] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 17:55:10,991 - INFO - 127.0.0.1 - - [21/May/2026 17:55:10] "[35m[1mPOST /inventory HTTP/1.1[0m" 201 -
+2026-05-21 17:55:34,180 - INFO - 127.0.0.1 - - [21/May/2026 17:55:34] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 18:00:16,100 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5555
+2026-05-21 18:00:16,100 - INFO - [33mPress CTRL+C to quit[0m
+2026-05-21 18:00:16,101 - INFO -  * Restarting with stat
+2026-05-21 18:00:16,298 - WARNING -  * Debugger is active!
+2026-05-21 18:00:16,305 - INFO -  * Debugger PIN: 750-087-955
+2026-05-21 18:00:29,593 - INFO - 127.0.0.1 - - [21/May/2026 18:00:29] "GET /inventory HTTP/1.1" 200 -
+2026-05-21 18:01:00,020 - INFO - 127.0.0.1 - - [21/May/2026 18:01:00] "GET /inventory HTTP/1.1" 200 -

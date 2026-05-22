@@ -14,7 +14,7 @@ def data_unpacker(data):
                 print(f'  Ingredients: {p["ingredients_text"]}')
                 print(f'  Product Size: {p["quantity"]}')
                 print(f'  Stock: {p["stock"]}')
-                print(f'  Price: {p["price"]}')
+                print(f'  Price: ${p["price"]}')
                 print(f'  UPC Barcode: {p["barcode"]}')
                 print("  ---")
                 print("\n")
