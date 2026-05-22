@@ -68,6 +68,7 @@ def lookup_add_item(data):
                 return
             else:
                 print("\nFailed to add product.")
+                print(f"Error: {r.get('message', 'Unknown error')}")
                 return
         elif confirmation.lower() == "n":
             print("Product not saved.")
