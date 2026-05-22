@@ -11,7 +11,7 @@ def view_item():
     if id is None:
         return
    
-    data_unpacker([response.json()])     
+    data_unpacker(response.json())     
     input("Press ENTER to continue")
 
 def add_item():

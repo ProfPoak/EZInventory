@@ -5,11 +5,10 @@ def request_helper(path, method, data=None, params=None):
     response = getattr(requests, method.lower())(url, json=data, params=params)
     return response
 
-# TODO: Refactor data_unpacker to handle both single dict and list like lookup_data_unpacker
-# so callers don't need to manually wrap single items in a list
 def data_unpacker(data):
     print("\nInventory:")
-    for p in data:
+    items = data if isinstance(data, list) else [data]
+    for p in items:
             print(f'  ID: {p["id"]}')
             print(f'  Product Name: {p["product_name"]}')
             print(f'  Brands: {p["brands"]}')
