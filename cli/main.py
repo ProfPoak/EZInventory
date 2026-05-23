@@ -1,3 +1,6 @@
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "modules"))
+
 import requests
 from modules.inventory import view_inventory, view_item, add_item, update_item, delete_item
 from modules.lookup import lookup_product
